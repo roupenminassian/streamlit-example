@@ -15,11 +15,12 @@ In the meantime, below is an example of what you can do with just a few lines of
 #Load documents
 with open("https://github.com/roupenminassian/streamlit-example/test.txt","rb") as fp:# Unpickling
   contents = pickle.load(fp)
+  st.write(contents)
 
-uploaded_file = st.file_uploader(contents)
+#uploaded_file = st.file_uploader(contents)
   
 #Preparing model
-tokenized_corpus = [doc.split(" ") for doc in uploaded_file]
+tokenized_corpus = [doc.split(" ") for doc in contents]
 
 bm25 = BM25Okapi(tokenized_corpus)
 
