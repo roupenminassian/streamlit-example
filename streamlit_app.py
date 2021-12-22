@@ -13,7 +13,7 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 #Load documents
-with open("/content/drive/MyDrive/test.txt","rb") as fp:# Unpickling
+with open("https://github.com/roupenminassian/streamlit-example/test.txt","rb") as fp:# Unpickling
   contents = pickle.load(fp)
 
 uploaded_file = st.file_uploader(contents)
