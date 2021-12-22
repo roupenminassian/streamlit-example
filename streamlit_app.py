@@ -13,9 +13,11 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 #Load documents
-with open("https://github.com/roupenminassian/streamlit-example/blob/ba023711c36ddbd50450f7a5e423d1ab0805eea1/test.txt","rb") as fp:# Unpickling
-  contents = pickle.load(fp)
-  st.write(contents)
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+  with open(uploaded_file,"rb") as fp:# Unpickling
+    contents = pickle.load(fp)
+    st.write(contents)
 
 #uploaded_file = st.file_uploader(contents)
   
