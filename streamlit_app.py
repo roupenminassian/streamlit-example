@@ -1,8 +1,11 @@
+!pip install rank_bm25
+
 from collections import namedtuple
 import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+
 import pickle
 from rank_bm25 import BM25Okapi
 
