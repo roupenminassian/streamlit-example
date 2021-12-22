@@ -1,4 +1,4 @@
-!pip install rank_bm25
+pip install rank_bm25
 
 from collections import namedtuple
 import altair as alt
