@@ -13,11 +13,11 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 #Load documents
-uploaded_file = st.file_uploader("https://github.com/roupenminassian/streamlit-example/test.txt")
+with open("/content/drive/MyDrive/test.txt","rb") as fp:# Unpickling
+  contents = pickle.load(fp)
 
-#with open("/content/drive/MyDrive/test.txt","rb") as fp:# Unpickling
-  #contents = pickle.load(fp)
-
+uploaded_file = st.file_uploader(contents)
+  
 #Preparing model
 tokenized_corpus = [doc.split(" ") for doc in uploaded_file]
 
