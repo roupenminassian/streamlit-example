@@ -2,5 +2,5 @@ rank-bm25 == 0.2.1
 streamlit
 altair
 pandas
-pickleshare==0.7.5
+pickleshare
 collections
