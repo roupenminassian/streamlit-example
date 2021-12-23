@@ -29,7 +29,6 @@ if input is None:
 
 with open("test.txt","rb") as fp:# Unpickling
     contents = pickle.load(fp)
-    st.write(contents)
 
 uploaded_file = st.file_uploader(contents)
   
