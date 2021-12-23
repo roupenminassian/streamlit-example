@@ -41,7 +41,7 @@ else:
         st.write('Please enter a query above.')
     
     else:
-        tokenized_query = query.split(" ")
+        tokenized_query = user_input.split(" ")
 
         doc_scores = bm25.get_scores(tokenized_query)
 
