@@ -37,9 +37,10 @@ else:
     
     user_input = st.text_input('Seed Text (can leave blank)')
 
-    tokenized_query = query.split(" ")
+    if user_input is not None:
+        tokenized_query = query.split(" ")
 
-    doc_scores = bm25.get_scores(tokenized_query)
+        doc_scores = bm25.get_scores(tokenized_query)
 
     if st.button('Generate Text'):
         generated_test = bm25.get_top_n(tokenized_query, contents, n=1)
