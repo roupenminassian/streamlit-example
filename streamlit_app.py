@@ -9,6 +9,8 @@ from rank_bm25 import BM25Okapi
 
 The project involves preprocessing textual data from the Royal Commission into "Aged Care Quality and Safety", and "Violence, Abuse, Neglect and Exploitation of People with Disability" and utilising natural language processing (NLP) techniques to improve document search functionality. Initial attempts were made to create a document-fetching algorithm designed to minimise the amount of time a user may spend searching relevant information.
 
+Please upload a file in the correct data format below; otherwise you may use an existing, preprocessed file by selecting the below box.
+
 """
 
 #Load documents
