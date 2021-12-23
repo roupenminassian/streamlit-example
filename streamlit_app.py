@@ -13,9 +13,21 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 #Load documents
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-  with open(uploaded_file,"rb") as fp:# Unpickling
+uploaded_file = st.file_uploader("")
+
+input = st.file_uploader('')
+    
+    if input is None:
+        st.write("Or use sample dataset to try the application")
+        sample = st.checkbox("Download sample data from GitHub")
+
+    try:
+        if sample:
+            st.markdown("""[download_link](https://gist.github.com/roupenminassian/0a17d0bf8a6410dbb1b9d3f42462c063)""")
+
+
+if input is not None:
+  with open(input,"rb") as fp:# Unpickling
     contents = pickle.load(fp)
     st.write(contents)
 
