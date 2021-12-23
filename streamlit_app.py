@@ -24,6 +24,9 @@ if input is None:
     try:
         if sample:
             st.markdown("""[download_link](https://gist.github.com/roupenminassian/0a17d0bf8a6410dbb1b9d3f42462c063)""")
+    
+    except:
+        pass
 
 
 with open(input,"rb") as fp:# Unpickling
