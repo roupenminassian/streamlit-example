@@ -29,8 +29,6 @@ if input is None:
 
 with open("test.txt","rb") as fp:# Unpickling
     contents = pickle.load(fp)
-
-uploaded_file = st.file_uploader(contents)
   
 #Preparing model
 tokenized_corpus = [doc.split(" ") for doc in contents]
