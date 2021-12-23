@@ -5,11 +5,10 @@ import pickle
 from rank_bm25 import BM25Okapi
 
 """
-# Welcome to Streamlit!
+# Data Science Institute x Disability Research Network: A UTS HASS-DSI Research Project
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+The project involves preprocessing textual data from the Royal Commission into "Aged Care Quality and Safety", and "Violence, Abuse, Neglect and Exploitation of People with Disability" and utilising natural language processing (NLP) techniques to improve document search functionality. Initial attempts were made to create a document-fetching algorithm designed to minimise the amount of time a user may spend searching relevant information.
 
-In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
 #Load documents
