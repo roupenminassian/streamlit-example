@@ -26,8 +26,7 @@ if input is None:
             st.markdown("""[download_link](https://gist.github.com/roupenminassian/0a17d0bf8a6410dbb1b9d3f42462c063)""")
 
 
-if input is not None:
-  with open(input,"rb") as fp:# Unpickling
+with open(input,"rb") as fp:# Unpickling
     contents = pickle.load(fp)
     st.write(contents)
 
