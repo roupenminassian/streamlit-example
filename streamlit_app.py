@@ -13,8 +13,6 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 #Load documents
-uploaded_file = st.file_uploader("")
-
 input = st.file_uploader('')
     
 if input is None:
