@@ -17,9 +17,9 @@ uploaded_file = st.file_uploader("")
 
 input = st.file_uploader('')
     
-    if input is None:
-        st.write("Or use sample dataset to try the application")
-        sample = st.checkbox("Download sample data from GitHub")
+if input is None:
+    st.write("Or use sample dataset to try the application")
+    sample = st.checkbox("Download sample data from GitHub")
 
     try:
         if sample:
