@@ -46,5 +46,5 @@ else:
         doc_scores = bm25.get_scores(tokenized_query)
 
         if st.button('Generate Text'):
-            generated_test = bm25.get_top_n(tokenized_query, contents, n=1)
+            generated_text = bm25.get_top_n(tokenized_query, contents, n=1)
             st.write(generated_text)
