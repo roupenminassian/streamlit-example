@@ -26,21 +26,21 @@ if input is None:
     except:
         pass
 
-
-with open("test.txt","rb") as fp:# Unpickling
+else:
+    with open("test.txt","rb") as fp:# Unpickling
     contents = pickle.load(fp)
   
-#Preparing model
-tokenized_corpus = [doc.split(" ") for doc in contents]
+    #Preparing model
+    tokenized_corpus = [doc.split(" ") for doc in contents]
 
-bm25 = BM25Okapi(tokenized_corpus)
+    bm25 = BM25Okapi(tokenized_corpus)
+    
+    user_input = st.text_input('Seed Text (can leave blank)')
 
-user_input = st.text_input('Seed Text (can leave blank)')
+    tokenized_query = query.split(" ")
 
-tokenized_query = query.split(" ")
+    doc_scores = bm25.get_scores(tokenized_query)
 
-doc_scores = bm25.get_scores(tokenized_query)
-
-if st.button('Generate Text'):
-    generated_test = bm25.get_top_n(tokenized_query, contents, n=1)
-    st.write(generated_text)
+    if st.button('Generate Text'):
+        generated_test = bm25.get_top_n(tokenized_query, contents, n=1)
+        st.write(generated_text)
