@@ -28,7 +28,7 @@ if input is None:
 
 else:
     with open("test.txt","rb") as fp:# Unpickling
-    contents = pickle.load(fp)
+        contents = pickle.load(fp)
   
     #Preparing model
     tokenized_corpus = [doc.split(" ") for doc in contents]
