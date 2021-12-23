@@ -37,11 +37,14 @@ else:
     
     user_input = st.text_input('Seed Text (can leave blank)')
 
-    if user_input is not None:
+    if user_input is None:
+        st.write('Please enter a query above.')
+    
+    else:
         tokenized_query = query.split(" ")
 
         doc_scores = bm25.get_scores(tokenized_query)
 
-    if st.button('Generate Text'):
-        generated_test = bm25.get_top_n(tokenized_query, contents, n=1)
-        st.write(generated_text)
+        if st.button('Generate Text'):
+            generated_test = bm25.get_top_n(tokenized_query, contents, n=1)
+            st.write(generated_text)
