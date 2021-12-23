@@ -27,7 +27,7 @@ if input is None:
         pass
 
 
-with open(input,"rb") as fp:# Unpickling
+with open("test.txt","rb") as fp:# Unpickling
     contents = pickle.load(fp)
     st.write(contents)
 
