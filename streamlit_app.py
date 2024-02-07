@@ -248,12 +248,11 @@ with MainTab:
         # Process model output and format for annotation
         text = ""
         entities = []
-        for entity in api_json_output:
+        for entity in model_output:
             entities.append((entity["word"], entity["entity_group"]))
-            text += " " * (entity["start"] - len(text)) + entity["word"]
         
         # Display annotated text
-        annotated_text(text, *entities)
+        annotated_text(*entities)
 
         # The code below is for the download button
         # Cache the conversion to prevent computation on every rerun
