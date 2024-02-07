@@ -47,11 +47,7 @@ st.sidebar.write("")
 
 # We create a text input field for users to enter their API key.
 
-API_KEY = st.sidebar.text_input(
-    "Enter your HuggingFace API key",
-    help="Once you created you HuggingFace account, you can get your free API token in your settings page: https://huggingface.co/settings/tokens",
-    type="password",
-)
+API_KEY = st.secrets["HF_KEY"]
 
 # Adding the HuggingFace API inference URL.
 API_URL = "https://ppsk5964bte2mrza.us-east-1.aws.endpoints.huggingface.cloud"
@@ -68,7 +64,7 @@ st.sidebar.markdown("---")
 st.sidebar.write(
     """
 
-App created by [Charly Wargnier](https://twitter.com/DataChaz) using [Streamlit](https://streamlit.io/)🎈 and [HuggingFace](https://huggingface.co/inference-api)'s [Distilbart-mnli-12-3](https://huggingface.co/valhalla/distilbart-mnli-12-3) model.
+App created by [Roupen Minassian](https://github.com/roupenminassian) using [Streamlit](https://streamlit.io/)🎈 and [HuggingFace](https://huggingface.co/inference-api)
 
 """
 )
