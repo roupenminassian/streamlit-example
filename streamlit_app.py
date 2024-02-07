@@ -4,11 +4,8 @@ from spacy import displacy
 
 # Load your trained NER model
 @st.cache(allow_output_mutation=True)
-def load_model():
-    # Replace "model-best" with the path to your actual trained model directory
-    return spacy.load("medical-ner")
 
-nlp = load_model()
+nlp = spacey.load("medical-ner")
 
 # Streamlit page setup
 st.title("Named Entity Recognition with spaCy")
