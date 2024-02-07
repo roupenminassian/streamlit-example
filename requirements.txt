@@ -6,4 +6,3 @@ pickleshare
 spacy
 numpy
 requests
-tarfile
