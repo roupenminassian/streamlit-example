@@ -144,7 +144,7 @@ with MainTab:
 
         text = st.text_area(
             # Instructions
-            "Enter keyphrases to classify",
+            "Enter medical text to classify",
             # 'sample' variable that contains our keyphrases.
             pre_defined_keyphrases,
             # The height
