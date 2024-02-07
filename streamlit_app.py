@@ -228,7 +228,7 @@ with MainTab:
         api_json_output = query(
                 {
                     "inputs": text,
-                    "parameters": {"aggregation_strategy": "average", "stride": 0}
+                    "parameters": {"aggregation_strategy": "simple", "stride": 0}
                 }
             )
 
