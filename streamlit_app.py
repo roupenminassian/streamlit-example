@@ -145,9 +145,6 @@ with MainTab:
 
         pre_defined_keyphrases = "CASE: A 28-year-old previously healthy man presented with a 6-week history of palpitations."
 
-        # Python list comprehension to create a string from the list of keyphrases.
-        keyphrases_string = f"{new_line.join(map(str, pre_defined_keyphrases))}"
-
         # The block of code below displays a text area
         # So users can paste their phrases to classify
 
