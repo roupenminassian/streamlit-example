@@ -83,18 +83,9 @@ with InfoTab:
         "[Streamlit](https://streamlit.io) is a Python library that allows the creation of interactive, data-driven web applications in Python."
     )
 
-    st.subheader("Resources")
+    st.subheader("What is HuggingFace?")
     st.markdown(
-        """
-    - [Streamlit Documentation](https://docs.streamlit.io/)
-    - [Cheat sheet](https://docs.streamlit.io/library/cheatsheet)
-    - [Book](https://www.amazon.com/dp/180056550X) (Getting Started with Streamlit for Data Science)
-    """
-    )
-
-    st.subheader("Deploy")
-    st.markdown(
-        "You can quickly deploy Streamlit apps using [Streamlit Community Cloud](https://streamlit.io/cloud) in just a few clicks."
+        "[HuggingFace](https://huggingface.co/) is a leading provider of state-of-the-art natural language processing models and tools."
     )
 
 
