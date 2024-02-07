@@ -106,7 +106,7 @@ with MainTab:
     st.markdown(
         """
 
-     Instantly analyze medical text or doctor's notes with a specialized NER classifier. !
+     Instantly analyze medical text or doctor's notes with a specialized NER classifier!
 
     """
     )
