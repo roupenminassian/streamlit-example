@@ -62,7 +62,7 @@ st.sidebar.markdown("---")
 st.sidebar.write(
     """
 
-App created by [Roupen Minassian](https://github.com/roupenminassian) using [Streamlit](https://streamlit.io/)🎈 and [HuggingFace](https://huggingface.co/inference-api)
+App created by [Roupen Minassian](https://github.com/roupenminassian) using [Streamlit](https://streamlit.io/) and [HuggingFace](https://huggingface.co/inference-api)
 
 """
 )
