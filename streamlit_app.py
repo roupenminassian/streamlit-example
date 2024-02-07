@@ -2,21 +2,7 @@ import streamlit as st
 import spacy
 from spacy import displacy
 
-import requests, tarfile
-
-# URL of the model file on GitHub
-model_url = 'https://github.com/roupenminassian/streamlit-example/blob/master/medical-ner.tar.gz'
-
-# Download and extract the model
-r = requests.get(model_url, allow_redirects=True)
-open('/medical-ner.tar.gz', 'wb').write(r.content)
-
-# Extract the tar.gz file
-tar = tarfile.open('/medical-ner.tar.gz', "r:gz")
-tar.extractall()
-tar.close()
-
-nlp = spacy.load("working/medical-ner")
+nlp = spacy.load("/medical-ner")
 
 # Streamlit page setup
 st.title("Named Entity Recognition with spaCy")
