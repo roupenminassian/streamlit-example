@@ -228,7 +228,7 @@ with MainTab:
         api_json_output = query(
                 {
                     "inputs": text,
-                    "parameters": {"aggregation_strategy": "average"}
+                    "parameters": {"aggregation_strategy": "average", "stride": 0}
                 }
             )
 
@@ -252,7 +252,7 @@ with MainTab:
             entities.append((entity["word"], entity["entity_group"]))
         
         # Display annotated text
-        annotated_text(*entities)
+        #annotated_text(*entities)
 
         # The code below is for the download button
         # Cache the conversion to prevent computation on every rerun
