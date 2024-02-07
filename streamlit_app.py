@@ -41,8 +41,6 @@ if not "valid_inputs_received" in st.session_state:
 
 ############ SIDEBAR CONTENT ############
 
-st.sidebar.write("")
-
 # For elements to be displayed in the sidebar, we need to add the sidebar element in the widget.
 
 # We create a text input field for users to enter their API key.
@@ -108,7 +106,7 @@ with MainTab:
     st.markdown(
         """
 
-    Classify keyphrases on the fly with this mighty app. No training needed!
+     Instantly analyze medical text or doctor's notes with a specialized NER classifier. !
 
     """
     )
@@ -152,32 +150,9 @@ with MainTab:
             # The height
             height=200,
             # The tooltip displayed when the user hovers over the text area.
-            help="At least two keyphrases for the classifier to work, one per line, "
-            + str(MAX_KEY_PHRASES)
-            + " keyphrases max in 'unlocked mode'. You can tweak 'MAX_KEY_PHRASES' in the code to change this",
+            help="Enter medical text, such as prescriptions or patient conditions, for accurate classification.",
             key="1",
         )
-
-        # The block of code below:
-
-        # 1. Converts the data st.text_area into a Python list.
-        # 2. It also removes duplicates and empty lines.
-        # 3. Raises an error if the user has entered more lines than in MAX_KEY_PHRASES.
-
-        linesList = []  # Creates an empty list
-        for x in text:
-            linesList.append(x)  # Adds each line to the list
-        linesList = list(dict.fromkeys(linesList))  # Removes dupes
-        linesList = list(filter(None, linesList))  # Removes empty lines
-
-        if len(linesList) > MAX_KEY_PHRASES:
-            st.info(
-                f"❄️ Note that only the first "
-                + str(MAX_KEY_PHRASES)
-                + " keyphrases will be reviewed to preserve performance. Fork the repo and tweak 'MAX_KEY_PHRASES' in the code to increase that limit."
-            )
-
-            linesList = linesList[:MAX_KEY_PHRASES]
 
         submit_button = st.form_submit_button(label="Submit")
 
