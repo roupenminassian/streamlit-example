@@ -143,7 +143,10 @@ with MainTab:
 
         MAX_KEY_PHRASES = 50
 
-        pre_defined_keyphrases = "CASE: A 28-year-old previously healthy man presented with a 6-week history of palpitations. The symptoms occurred during rest, 2–3 times per week, lasted up to 30 minutes at a time and were associated with dyspnea. Except for a grade 2/6 holosystolic tricuspid regurgitation murmur (best heard at the left sternal border with inspiratory accentuation), physical examination yielded unremarkable findings."
+        pre_defined_keyphrases = "
+Certainly, here is a concise version of the doctor's notes:
+
+John Doe, a 45-year-old male with a history of hypertension and diabetes, presented with a 3-month history of persistent lower back pain radiating to the left leg, exacerbated by prolonged sitting or standing. Physical examination revealed tenderness in the lower lumbar region without neurological deficits. The patient's medications include Lisinopril and Metformin, with occasional ibuprofen for pain. There's no significant family history contributing to the current condition. Considering the clinical presentation, a lumbar strain is suspected, and conservative management with physical therapy and NSAIDs is recommended, with a follow-up in 4 weeks to assess progress."
 
         # The block of code below displays a text area
         # So users can paste their phrases to classify
