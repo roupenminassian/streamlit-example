@@ -1,51 +1,33 @@
-import pandas as pd
 import streamlit as st
+import spacy
+from spacy import displacy
 
-import pickle
-from rank_bm25 import BM25Okapi
+# Load your trained NER model
+@st.cache(allow_output_mutation=True)
+def load_model():
+    # Replace "model-best" with the path to your actual trained model directory
+    return spacy.load("model-best")
 
-"""
-# Data Science Institute x Disability Research Network: A UTS HASS-DSI Research Project
+nlp = load_model()
 
-The project involves preprocessing textual data from the Royal Commission into "Aged Care Quality and Safety", and "Violence, Abuse, Neglect and Exploitation of People with Disability" and utilising natural language processing (NLP) techniques to improve document search functionality. Initial attempts were made to create a document-fetching algorithm designed to minimise the amount of time a user may spend searching relevant information.
+# Streamlit page setup
+st.title("Named Entity Recognition with spaCy")
 
-Please upload a file in the correct data format below; otherwise you may use an existing, preprocessed file by selecting the below box.
+# Text input
+text_input = st.text_area("Enter text here to extract named entities", "Sample text: MEDICAL REPORT. The Sheriff as a condition of granting sick leave with pay, may require medical evidence of sickness or injury acceptable to the Sheriff’s Office when the employee is absent for more than three consecutive working days or when the agency/department head determines within his/her discretion that there are indications of excessive use of sick leave or sick leave abuse.", height=200)
 
-"""
+# Process the text input
+doc = nlp(text_input)
 
-#Load documents
-input = st.file_uploader('')
-    
-if input is None:
-    st.write("Or use sample dataset to try the application")
-    sample = st.checkbox("Download sample data from GitHub")
-
-    try:
-        if sample:
-            st.markdown("""[download_link](https://gist.github.com/roupenminassian/0a17d0bf8a6410dbb1b9d3f42462c063)""")
-    
-    except:
-        pass
-
+# Display entities
+st.write("Named Entities:")
+if doc.ents:
+    for ent in doc.ents:
+        st.write(ent.text, ent.label_)
 else:
-    with open("test.txt","rb") as fp:# Unpickling
-        contents = pickle.load(fp)
-  
-    #Preparing model
-    tokenized_corpus = [doc.split(" ") for doc in contents]
+    st.write("No named entities found.")
 
-    bm25 = BM25Okapi(tokenized_corpus)
-    
-    user_input = st.text_input('Seed Text (can leave blank)')
-
-    if user_input is None:
-        st.write('Please enter a query above.')
-    
-    else:
-        tokenized_query = user_input.split(" ")
-
-        doc_scores = bm25.get_scores(tokenized_query)
-
-        if st.button('Generate Text'):
-            generated_text = bm25.get_top_n(tokenized_query, contents, n=1)
-            st.write(generated_text)
+# Using displaCy to visualize entities
+st.write("Visualized Named Entities:")
+html = displacy.render(doc, style="ent")
+st.write(html, unsafe_allow_html=True)
