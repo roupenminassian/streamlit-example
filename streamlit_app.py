@@ -6,7 +6,7 @@ from spacy import displacy
 @st.cache(allow_output_mutation=True)
 def load_model():
     # Replace "model-best" with the path to your actual trained model directory
-    return spacy.load("model-best")
+    return spacy.load("train.spacy")
 
 nlp = load_model()
 
