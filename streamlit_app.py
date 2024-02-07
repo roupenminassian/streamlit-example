@@ -7,6 +7,7 @@ import requests
 import pandas as pd
 import numpy as np
 from streamlit_tags import st_tags  # to add labels on the fly!
+from annotated_text import annotated_text
 
 
 ############ 2. SETTING UP THE PAGE LAYOUT AND TITLE ############
@@ -267,36 +268,26 @@ with MainTab:
         ############ DATA WRANGLING ON THE RESULTS ############
         # Various data wrangling to get the data in the right format!
 
-        # List comprehension to convert the score from decimals to percentages
-        f = [[f"{x:.2%}" for x in row] for row in df["scores"]]
-
-        # Join the classification scores to the dataframe
-        df["classification scores"] = f
-
-        # Rename the column 'sequence' to 'keyphrase'
-        df.rename(columns={"sequence": "keyphrase"}, inplace=True)
-
-        # The API returns a list of all labels sorted by score. We only want the top label.
-
-        # For that, we need to select the first element in the 'labels' and 'classification scores' lists
-        df["label"] = df["labels"].str[0]
-        df["accuracy"] = df["classification scores"].str[0]
-
-        # Drop the columns we don't need
-        df.drop(["scores", "labels", "classification scores"], inplace=True, axis=1)
-
-        # st.write(df)
-
-        # We need to change the index. Index starts at 0, so we make it start at 1
-        df.index = np.arange(1, len(df) + 1)
-
-        # Display the dataframe
-        st.write(df)
-
-        cs, c1 = st.columns([2, 2])
-
-
-
+        # Function to format annotated text
+        def format_annotated_text(text, entities):
+            annotated = []
+            last_end = 0
+            for entity in entities:
+                annotated.append(text[last_end:entity["start"]])
+                annotated.append((text[entity["start"]:entity["end"]], entity["entity_group"]))
+                last_end = entity["end"]
+            annotated.append(text[last_end:])
+            return annotated
+        
+        # Process model output and format for annotation
+        text = ""
+        entities = []
+        for entity in list_for_api_output:
+            text += " " * (entity["start"] - len(text)) + entity["word"]
+            entities.append({"start": len(text) - len(entity["word"]), "end": len(text), "entity_group": entity["entity_group"]})
+        
+        # Display annotated text
+        annotated_text(*format_annotated_text(text, entities))
 
         # The code below is for the download button
         # Cache the conversion to prevent computation on every rerun
