@@ -15,7 +15,7 @@ from annotated_text import annotated_text
 # `st.set_page_config` is used to display the default layout width, the title of the app, and the emoticon in the browser tab.
 
 st.set_page_config(
-    layout="centered", page_title="Medical NER Text Classifier", page_icon="❄️"
+    layout="centered", page_title="Medical NER Text Classifier"
 )
 
 ############ CREATE THE LOGO AND HEADING ############
@@ -30,7 +30,7 @@ c1, c2 = st.columns([0.32, 2])
 with c2:
 
     st.caption("")
-    st.title("Zero-Shot Text Classifier")
+    st.title("Medical NER Text Classifier")
 
 
 # We need to set up session state via st.session_state so that app interactions don't reset the app.
