@@ -232,7 +232,7 @@ with MainTab:
                 }
             )
 
-        print(api_json_output)
+        st.write(api_json_output)
 
         st.success("✅ Done!")
 
@@ -246,10 +246,10 @@ with MainTab:
         # Various data wrangling to get the data in the right format!
 
         # Process model output and format for annotation
-        text = ""
-        entities = []
-        for entity in api_json_output:
-            entities.append((entity["word"], entity["entity_group"]))
+        #text = ""
+        #entities = []
+        #for entity in api_json_output:
+            #entities.append((entity["word"], entity["entity_group"]))
         
         # Display annotated text
         #annotated_text(*entities)
