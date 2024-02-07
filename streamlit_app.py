@@ -257,7 +257,7 @@ with MainTab:
         # Process model output and format for annotation
         text = ""
         entities = []
-        for entity in model_output:
+        for entity in api_json_output:
             text += " " * (entity["start"] - len(text)) + entity["word"]
             entities.append({"start": len(text) - len(entity["word"]), "end": len(text), "entity_group": entity["entity_group"]})
         
