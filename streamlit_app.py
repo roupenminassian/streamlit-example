@@ -232,6 +232,8 @@ with MainTab:
                 }
             )
 
+        print(api_json_output)
+
         st.success("✅ Done!")
 
         st.caption("")
@@ -243,26 +245,17 @@ with MainTab:
         ############ DATA WRANGLING ON THE RESULTS ############
         # Various data wrangling to get the data in the right format!
 
-        # Function to format annotated text
-        def format_annotated_text(text, entities):
-            annotated = []
-            last_end = 0
-            for entity in entities:
-                annotated.append(text[last_end:entity["start"]])
-                annotated.append((text[entity["start"]:entity["end"]], entity["entity_group"]))
-                last_end = entity["end"]
-            annotated.append(text[last_end:])
-            return annotated
-        
         # Process model output and format for annotation
-        text = ""
-        entities = []
+        annotated = []
+        last_end = 0
         for entity in api_json_output:
-            text += " " * (entity["start"] - len(text)) + entity["word"]
-            entities.append({"start": len(text) - len(entity["word"]), "end": len(text), "entity_group": entity["entity_group"]})
+            if last_end < entity["start"]:
+                annotated.append((" ".join([word for word in entity["word"][:entity["start"] - last_end].split()]), None))
+            annotated.append((entity["word"], entity["entity_group"]))
+            last_end = entity["end"]
         
         # Display annotated text
-        annotated_text(*format_annotated_text(text, entities))
+        annotated_text(*annotated)
 
         # The code below is for the download button
         # Cache the conversion to prevent computation on every rerun
