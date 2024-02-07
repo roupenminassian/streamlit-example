@@ -143,11 +143,7 @@ with MainTab:
 
         MAX_KEY_PHRASES = 50
 
-        new_line = "\n"
-
-        pre_defined_keyphrases = [
-            "CASE: A 28-year-old previously healthy man presented with a 6-week history of palpitations."
-        ]
+        pre_defined_keyphrases = "CASE: A 28-year-old previously healthy man presented with a 6-week history of palpitations."
 
         # Python list comprehension to create a string from the list of keyphrases.
         keyphrases_string = f"{new_line.join(map(str, pre_defined_keyphrases))}"
@@ -159,7 +155,7 @@ with MainTab:
             # Instructions
             "Enter keyphrases to classify",
             # 'sample' variable that contains our keyphrases.
-            keyphrases_string,
+            pre_defined_keyphrases,
             # The height
             height=200,
             # The tooltip displayed when the user hovers over the text area.
@@ -175,7 +171,6 @@ with MainTab:
         # 2. It also removes duplicates and empty lines.
         # 3. Raises an error if the user has entered more lines than in MAX_KEY_PHRASES.
 
-        text = text.split("\n")  # Converts the pasted text to a Python list
         linesList = []  # Creates an empty list
         for x in text:
             linesList.append(x)  # Adds each line to the list
@@ -228,34 +223,17 @@ with MainTab:
         # This function has one argument: the payload
         # The payload is the data we want to send to HugggingFace when we make an API request
 
-        # We create a list to store the outputs of the API call
-
-        list_for_api_output = []
-
-        # We create a 'for loop' that iterates through each keyphrase
-        # An API call will be made every time, for each keyphrase
-
         # The payload is composed of:
         #   1. the keyphrase
         #   2. the labels
         #   3. the 'wait_for_model' parameter set to "True", to avoid timeouts!
 
-        for row in linesList:
-            api_json_output = query(
+        api_json_output = query(
                 {
-                    "inputs": row,
+                    "inputs": text,
                     "parameters": {"aggregation_strategy": "simple"}
                 }
             )
-
-            # Let's have a look at the output of the API call
-            # st.write(api_json_output)
-
-            # All the results are appended to the empty list we created earlier
-            list_for_api_output.append(api_json_output)
-
-            # then we'll convert the list to a dataframe
-            df = pd.DataFrame.from_dict(list_for_api_output)
 
         st.success("✅ Done!")
 
@@ -282,7 +260,7 @@ with MainTab:
         # Process model output and format for annotation
         text = ""
         entities = []
-        for entity in list_for_api_output:
+        for entity in api_json_output:
             text += " " * (entity["start"] - len(text)) + entity["word"]
             entities.append({"start": len(text) - len(entity["word"]), "end": len(text), "entity_group": entity["entity_group"]})
         
