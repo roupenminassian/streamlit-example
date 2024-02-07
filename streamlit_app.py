@@ -2,9 +2,6 @@ import streamlit as st
 import spacy
 from spacy import displacy
 
-# Load your trained NER model
-@st.cache(allow_output_mutation=True)
-
 nlp = spacey.load("medical-ner")
 
 # Streamlit page setup
