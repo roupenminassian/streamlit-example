@@ -6,3 +6,4 @@ pickleshare
 spacy
 numpy
 requests
+streamlit-tags
