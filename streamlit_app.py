@@ -244,6 +244,7 @@ with MainTab:
                 {
                     "inputs": row,
                     "parameters": {"aggregation_strategy": "simple"}
+                }
             )
 
             # Let's have a look at the output of the API call
