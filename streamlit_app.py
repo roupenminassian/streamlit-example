@@ -47,7 +47,7 @@ st.sidebar.write("")
 
 # We create a text input field for users to enter their API key.
 
-API_KEY = st.secrets["HF_KEY"]
+API_KEY = st.secrets["my_secret"]["HF_KEY"]
 
 # Adding the HuggingFace API inference URL.
 API_URL = "https://ppsk5964bte2mrza.us-east-1.aws.endpoints.huggingface.cloud"
