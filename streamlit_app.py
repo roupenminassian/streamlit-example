@@ -254,29 +254,5 @@ with MainTab:
             annotated.append(text[last_end:])
             return annotated
         
-        # Process model output and format for annotation
-        text = ""
-        entities = []
-        for entity in api_json_output:
-            text += " " * (entity["start"] - len(text)) + entity["word"]
-            entities.append({"start": len(text) - len(entity["word"]), "end": len(text), "entity_group": entity["entity_group"]})
-        
         # Display annotated text
-        annotated_text(*format_annotated_text(text, entities))
-
-        with cs:
-
-            @st.experimental_memo
-            def convert_df(df):
-                return df.to_csv().encode("utf-8")
-
-            csv = convert_df(df)
-
-            st.caption("")
-
-            st.download_button(
-                label="Download results",
-                data=csv,
-                file_name="classification_results.csv",
-                mime="text/csv",
-            )
+        annotated_text(*format_annotated_text(text, api_json_output))
