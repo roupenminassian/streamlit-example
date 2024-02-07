@@ -9,15 +9,14 @@ model_url = 'https://github.com/roupenminassian/streamlit-example/blob/master/me
 
 # Download and extract the model
 r = requests.get(model_url, allow_redirects=True)
-open('medical-ner.tar.gz', 'wb').write(r.content)
+open(model_url, 'wb').write(r.content)
 
 # Extract the tar.gz file
-tar = tarfile.open('medical-ner.tar.gz', "r:gz")
+tar = tarfile.open(model_url, "r:gz")
 tar.extractall()
 tar.close()
 
-
-nlp = spacy.load("/medical-ner")
+nlp = spacy.load("working/medical-ner")
 
 # Streamlit page setup
 st.title("Named Entity Recognition with spaCy")
