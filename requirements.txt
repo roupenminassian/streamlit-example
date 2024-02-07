@@ -7,3 +7,4 @@ spacy
 numpy
 requests
 streamlit-tags
+annotated-text
