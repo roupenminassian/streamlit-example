@@ -2,7 +2,7 @@ import streamlit as st
 import spacy
 from spacy import displacy
 
-nlp = spacey.load("medical-ner")
+nlp = spacy.load("medical-ner")
 
 # Streamlit page setup
 st.title("Named Entity Recognition with spaCy")
