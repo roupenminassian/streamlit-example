@@ -5,7 +5,7 @@ from spacy import displacy
 import requests, tarfile
 
 # URL of the model file on GitHub
-model_url = 'https://github.com/roupenminassian/streamlit-example/raw/main/medical-ner.tar.gz'
+model_url = 'https://github.com/roupenminassian/streamlit-example/blob/master/medical-ner.tar.gz'
 
 # Download and extract the model
 r = requests.get(model_url, allow_redirects=True)
