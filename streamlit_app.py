@@ -238,5 +238,5 @@ with MainTab:
 
         st.write("")
 
-        st.write("**Recommendations:**")
+        st.markdown("**Recommendations:**")
         st.write(api_json_output_2[0]["generated_text"])
