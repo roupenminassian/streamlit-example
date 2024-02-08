@@ -203,7 +203,7 @@ with MainTab:
                 {
                     "inputs": "Given the proceeding statement, suggest medicine that the patient should take: " + text,
                     "parameters": {
-                        "temperature": 0
+                        "temperature": 0.1
                     }
                 }
             )
