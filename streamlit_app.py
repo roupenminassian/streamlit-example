@@ -236,4 +236,6 @@ with MainTab:
         # Display annotated text
         annotated_text(*format_annotated_text(text, api_json_output))
 
-        st.write("Recommendations: " + api_json_output_2[0]["generated_text"])
+        st.write("")
+
+        st.write("**Recommendations: **" + api_json_output_2[0]["generated_text"])
