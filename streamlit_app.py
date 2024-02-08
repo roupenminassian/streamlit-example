@@ -204,9 +204,9 @@ with MainTab:
 
         api_json_output_2 = query_2(
                 {
-                    "inputs": "Given the list of entities, suggest medicine that the patient should take: " + medication_entities_string,
+                    "inputs": "Given the list of entities, suggest medicine that the patient should take. Please just provide the medicines and nothing else: " + medication_entities_string,
                     "parameters": {
-                        "temperature": 0.1
+                        "temperature": 0.01
                     }
                 }
             )
