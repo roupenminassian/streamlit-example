@@ -48,7 +48,8 @@ if not "valid_inputs_received" in st.session_state:
 API_KEY = st.secrets["my_secret"]["HF_KEY"]
 
 # Adding the HuggingFace API inference URL.
-API_URL = "https://ppsk5964bte2mrza.us-east-1.aws.endpoints.huggingface.cloud"
+API_URL_1 = "https://ppsk5964bte2mrza.us-east-1.aws.endpoints.huggingface.cloud"
+API_URL_2 = "https://kxo555j5ehh3adrf.us-east-1.aws.endpoints.huggingface.cloud"
 
 # Now, let's create a Python dictionary to store the API headers.
 headers = {"Accept" : "application/json","Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json" }
@@ -175,9 +176,13 @@ with MainTab:
         # First, we create a Python function to construct the API call.
 
         def query(payload):
-            response = requests.post(API_URL, headers=headers, json=payload)
+            response = requests.post(API_URL_1, headers=headers, json=payload)
             return response.json()
 
+        def query_2(payload):
+            response = requests.post(API_URL_2, headers=headers, json=payload)
+            return response.json()
+            
         # The function will send an HTTP POST request to the API endpoint.
         # This function has one argument: the payload
         # The payload is the data we want to send to HugggingFace when we make an API request
@@ -191,6 +196,15 @@ with MainTab:
                 {
                     "inputs": text,
                     "parameters": {"aggregation_strategy": "average", "stride": 1}
+                }
+            )
+
+        api_json_output_2 = query_2(
+                {
+                    "inputs": "Given the proceeding statement, suggest medicine that the patient should take: " + text,
+                    "parameters": {
+                        "temperature": 0
+                    }
                 }
             )
 
@@ -218,3 +232,5 @@ with MainTab:
         
         # Display annotated text
         annotated_text(*format_annotated_text(text, api_json_output))
+
+        st.write(api_json_output_2)
