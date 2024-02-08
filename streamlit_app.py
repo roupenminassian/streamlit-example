@@ -238,4 +238,5 @@ with MainTab:
 
         st.write("")
 
-        st.write("**Recommendations: **" + api_json_output_2[0]["generated_text"])
+        st.write("**Recommendations:**")
+        st.write(api_json_output_2[0]["generated_text"])
