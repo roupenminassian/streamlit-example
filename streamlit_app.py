@@ -200,10 +200,11 @@ with MainTab:
             )
 
         medication_entities = [entity for entity in api_json_output if entity["entity_group"] == "Medication"]
+        medication_entities_string = ', '.join([entity['word'] for entity in medication_entities])
 
         api_json_output_2 = query_2(
                 {
-                    "inputs": "Given the list of entities, suggest medicine that the patient should take: " + str(medication_entities),
+                    "inputs": "Given the list of entities, suggest medicine that the patient should take: " + medication_entities_string,
                     "parameters": {
                         "temperature": 0.1
                     }
