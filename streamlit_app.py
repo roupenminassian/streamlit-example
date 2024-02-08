@@ -203,7 +203,7 @@ with MainTab:
 
         api_json_output_2 = query_2(
                 {
-                    "inputs": "Given the list of entities, suggest medicine that the patient should take: " + medication_entities,
+                    "inputs": "Given the list of entities, suggest medicine that the patient should take: " + str(medication_entities),
                     "parameters": {
                         "temperature": 0.1
                     }
