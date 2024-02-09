@@ -202,15 +202,6 @@ with MainTab:
         medication_entities = [entity for entity in api_json_output if entity["entity_group"] == "Medication"]
         medication_entities_string = ', '.join([entity['word'] for entity in medication_entities])
 
-        api_json_output_2 = query_2(
-                {
-                    "inputs": "Given the list of entities, suggest medicine that the patient should take. Please just provide the medicines and nothing else: " + medication_entities_string,
-                    "parameters": {
-                        "temperature": 0.01
-                    }
-                }
-            )
-
         st.success("✅ Done!")
 
         st.caption("")
@@ -235,8 +226,3 @@ with MainTab:
         
         # Display annotated text
         annotated_text(*format_annotated_text(text, api_json_output))
-
-        st.write("")
-
-        st.markdown("**Recommendations:**")
-        st.write(api_json_output_2[0]["generated_text"])
